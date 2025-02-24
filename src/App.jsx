@@ -1,39 +1,51 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from "react";
+import PostCard from "./components/postcard";
+
+const posts = [
+  { 
+    id: 1, 
+    username: "Tim", 
+    profilePic: "https://randomuser.me/api/portraits/men/1.jpg",
+    content: "Had a great day at the beach! "
+  },
+  { 
+    id: 2, 
+    username: "Harlie", 
+    profilePic: "https://randomuser.me/api/portraits/women/2.jpg",
+    content: "Just finished reading an amazing book! "
+  },
+  { 
+    id: 3, 
+    username: "Harry", 
+    profilePic: "https://randomuser.me/api/portraits/men/3.jpg",
+    content: "Excited for my next adventure! "
+  }
+];
 
 function App() {
-
-  const initialPosts = [
-    {
-      id: 1,
-      profileImage: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?cs=srgb&dl=pexels-pixabay-220453.jpg&fm=jpg',
-      username: 'alice',
-      content: 'This is my first post!',
-      isLiked: false,
-    },
-    {
-      id: 2,
-      profileImage: 'https://writestylesonline.com/wp-content/uploads/2016/08/Follow-These-Steps-for-a-Flawless-Professional-Profile-Picture.jpg',
-      username: 'bob',
-      content: 'Loving this social media app.',
-      isLiked: true,
-    },
-    {
-      id: 3,
-      profileImage: 'https://png.pngtree.com/png-clipart/20230927/original/pngtree-man-avatar-image-for-profile-png-image_13001882.png',
-      username: 'charlie',
-      content: 'Just another day...',
-      isLiked: false,
-    },
-  ];
-
   return (
-    <>
-      
-    </>
-  )
+    <div style={styles.container}>
+      <h1 style={styles.heading}>Social Media Feed</h1>
+      <div>
+        {posts.map(post => (
+          <PostCard key={post.id} post={post} />
+        ))}
+      </div>
+    </div>
+  );
 }
 
-export default App
+const styles = {
+  container: {
+    textAlign: "center",
+    padding: "20px",
+    fontFamily: "Arial, sans-serif",
+  },
+  heading: {
+    fontSize: "28px",
+    fontWeight: "bold",
+    marginBottom: "20px",
+  }
+};
+
+export default App;
